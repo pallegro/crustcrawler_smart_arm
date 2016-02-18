@@ -1,20 +1,14 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+project(smart_arm_description)
+find_package(catkin REQUIRED)
 
-rosbuild_init()
-
-#set the default path for built executables to the "bin" directory
-#set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-#set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 # mesh file generations
-#rosbuild_find_ros_package(ivcon)
-#rosbuild_find_ros_package(convex_decomposition)
-
 # iterate through all the stl files to:
 #  1. convert to *.iv files
 #  2. generate convex decomposed .stl
+
 file(GLOB smart_arm_stl_files ${CMAKE_CURRENT_SOURCE_DIR}/meshes/*.stl)
 set(smart_arm_gen_files "")
 
@@ -24,7 +18,7 @@ foreach(it ${smart_arm_stl_files})
 
   IF ( ${basename} MATCHES "_convex" )
 
-    message("ignoring stale .._convex.stl file:",${basename})
+    message("ignoring stale .._convex.stl file:" ,${basename})
 
   ELSE ( ${basename} MATCHES "_convex" )
 
@@ -101,3 +95,8 @@ endforeach(it)
 
 add_custom_target(media_files ALL DEPENDS ${smart_arm_gen_files} )
 
+catkin_package(CATKIN_DEPENDS xacro)
+
+foreach(dir urdf openrave meshes Media launch controllers)
+   install(DIRECTORY ${dir}/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach(dir)

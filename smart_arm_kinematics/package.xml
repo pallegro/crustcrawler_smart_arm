@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package>
+  <name>smart_arm_kinematics</name>
+  <version>0.0.0</version>
+  <description>Crust Crawler AX-12+ Smart Arm kinematics</description>
+
+  <maintainer email="somebody@gmail.com">Some Body</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/smart_arm_kinematics</url>
+  <url type="bugtracker">https://github.com/pallegro/crustcrawler_smart_arm/issues</url>
+  <url type="repository">https://github.com/pallegro/crustcrawler_smart_arm</url>
+
+  <author email="somebody@gmail.com">Antons Rebguns</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>rospy</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>rospy</run_depend>
+
+</package>
