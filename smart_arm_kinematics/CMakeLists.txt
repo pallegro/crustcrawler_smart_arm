@@ -9,7 +9,6 @@ target_link_libraries(smart_arm_ik ${catkin_LIBRARIES})
 add_executable(smart_arm_ik_service src/smart_arm_node.cpp)
 target_link_libraries(smart_arm_ik_service ${catkin_LIBRARIES})
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/)
-install(PROGRAMS scripts/make_cobra_pose.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 catkin_install_python(PROGRAMS nodes/test_ik_service.py
   DESTINATION  ${CATKIN_PACKAGE_SHARE_DESTINATION}/nodes/test_ik_service.py)
 #install(PROGRAMS nodes/test_ik_service.py
