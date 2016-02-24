@@ -97,6 +97,8 @@ add_custom_target(media_files ALL DEPENDS ${smart_arm_gen_files} )
 
 catkin_package(CATKIN_DEPENDS xacro)
 
-foreach(dir urdf openrave meshes Media launch controllers)
+foreach(dir urdf openrave meshes Media launch controllers worlds)
    install(DIRECTORY ${dir}/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach(dir)
+install(PROGRAMS scripts/smart_arm_pickup.py scripts/smart_arm_teleop_keyboard.py
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/scripts)
