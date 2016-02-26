@@ -35,16 +35,16 @@
 * Author: Antons Rebguns
 -->
 
-<robot name="rrbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="smart_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:include filename="$(find smart_arm_description)/urdf/materials.urdf.xacro" />
 
-  <include filename="$(find smart_arm_description)/urdf/materials.urdf.xacro" />
-
-  <macro name="smart_arm" params="parent *origin">
+  <xacro:macro name="smart_arm" params="parent decimated:='' *origin">
     <!-- ****** JOINT DEFINITIONS ****** -->
     
     <!-- Arm's base joint -->
     <joint name="arm_base_joint" type="fixed">
-      <insert_block name="origin" /> 
+      <xacro:insert_block name="origin" /> 
       <parent link="${parent}"/>
       <child link="arm_base_link"/>
     </joint>
@@ -139,7 +139,7 @@
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_base.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_base${decimated}.dae"/>
         </geometry>
         <material name="Green" />
       </visual>
@@ -147,7 +147,8 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_base.dae"/>
+          <!--box><size>0.115 0.115 0.05</size></box-->
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_base${decimated}.dae"/>
         </geometry>
       </collision>
     </link>
@@ -164,7 +165,7 @@
       <visual>
         <origin xyz="0.0 0.0 0.005" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_shoulder_pan.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_shoulder_pan${decimated}.dae"/>
         </geometry>
         <material name="Grey" />
       </visual>
@@ -172,7 +173,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_shoulder_pan.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_shoulder_pan${decimated}.dae"/>
         </geometry>
       </collision>
     </link>
@@ -189,7 +190,7 @@
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_shoulder_pitch.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_shoulder_pitch${decimated}.dae"/>
         </geometry>
         <material name="Blue" />
       </visual>
@@ -197,7 +198,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_shoulder_pitch.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_shoulder_pitch${decimated}.dae"/>
         </geometry>
       </collision>
     </link>
@@ -214,7 +215,7 @@
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_elbow_flex.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_elbow_flex${decimated}.dae"/>
         </geometry>
         <material name="Green" />
       </visual>
@@ -222,7 +223,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_elbow_flex.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_elbow_flex${decimated}.dae"/>
         </geometry>
       </collision>
     </link>
@@ -239,7 +240,7 @@
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_wrist_roll.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_wrist_roll${decimated}.dae"/>
         </geometry>
         <material name="Grey" />
       </visual>
@@ -247,7 +248,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_wrist_roll.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_wrist_roll${decimated}.dae"/>
         </geometry>
       </collision>
     </link>
@@ -264,7 +265,7 @@
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_right_finger.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_right_finger${decimated}.dae"/>
         </geometry>
         <material name="Blue" />
       </visual>
@@ -272,7 +273,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_right_finger.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_right_finger${decimated}.dae"/>
         </geometry>
       </collision>
     </link>
@@ -289,7 +290,7 @@
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_left_finger.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_left_finger${decimated}.dae"/>
         </geometry>
         <material name="Green" />
       </visual>
@@ -297,7 +298,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://smart_arm_description/meshes/collada/arm_left_finger.dae"/>
+          <mesh filename="package://smart_arm_description/meshes/collada/arm_left_finger${decimated}.dae"/>
         </geometry>
       </collision>
     </link>
@@ -468,5 +469,5 @@
       <stopKp value="1000000.0" />
       <fudgeFactor value="1.0" />
     </gazebo>
-  </macro>
+  </xacro:macro>
 </robot>
